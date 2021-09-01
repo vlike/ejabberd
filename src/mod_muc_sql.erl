@@ -76,7 +76,7 @@ store_room(LServer, Host, Name, Opts, ChangesHints) ->
                     _ ->
                         ejabberd_sql:sql_query_t(
                           ?SQL("delete from muc_room_subscribers where "
-                               "room=%(Name)s and host=%(Host)s")),
+                               "room=%(Name)s and host=%(Host)s;")),
                         [change_room(Host, Name, {add_subscription, JID, Nick, Nodes})
                          || {JID, Nick, Nodes} <- Subs]
                 end
